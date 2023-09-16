@@ -3,7 +3,8 @@ import React from "react";
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 import { useEffect } from "react";
 import { useBoardStore } from "@/store/BoardStore";
-// 2:28
+import Column from "./Column";
+
 function Board() {
   const [board, getBoard] = useBoardStore((state) => [
     state.board,
@@ -33,7 +34,7 @@ function Board() {
             <Column
             key={id}
             id={id}
-            todo={column.todos}
+            todos={column.todos}
             index={index}
             />
           ))}
