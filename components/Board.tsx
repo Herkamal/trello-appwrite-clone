@@ -29,6 +29,9 @@ function Board() {
         columns: rearragedColumn,
       });
     }
+    const column = Array.from(board.columns)
+    const startColIndex = column[Number(source.droppableId)];
+    const finishColIndex = column[Number(destination.droppableId)];
   };
 
   return (
