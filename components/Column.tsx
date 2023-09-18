@@ -26,7 +26,7 @@ function Column({ id, todos, index }: Props) {
           {...provided.dragHandleProps}
           ref={provided.innerRef}
         >
-          {/* You can render your content here */}
+          
           <Droppable droppableId={index.toString()} type="todo">
             {(provided, snapshot) => (
               <div
@@ -47,8 +47,8 @@ function Column({ id, todos, index }: Props) {
                 <div className="space-y-2">
                   {todos.map((todo, index) => (
                     <Draggable
-                      key={todo.id}
-                      draggableId={todo.id}
+                      key={todo.$id}
+                      draggableId={todo.$id}
                       index={index}
                     >
                       {(provided) => (
