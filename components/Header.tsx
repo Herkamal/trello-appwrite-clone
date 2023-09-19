@@ -1,17 +1,33 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MagnifyingGlassIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import Avatar from "react-avatar";
 import { useBoardStore } from "@/store/BoardStore";
 
 function Header() {
-  const [searchString, setSearchString] = useBoardStore((state) => [
-     state.searchString,
-     state.setSearchString,
+  const [board, searchString, setSearchString] = useBoardStore((state) => [
+    state.board,
+    state.searchString,
+    state.setSearchString,
   ]);
-  
+  const [loading, setLoading] = useState<boolean>(false);
+  const [suggestion, setSuggestion] = useState<string>("");
+
+  useEffect(() =>{
+    if(board.columns.size === 0) return;
+      setLoading(true);
+
+      const fetchSuggestionFunc = async () => {
+        const suggestion = await fetchSuggestion(board);
+        setSuggestion(suggestion);
+        setLoading(false);
+      }
+        // 4:01
+      fetchSuggestionFunc();
+  },[board])
+
   return (
     <header>
       <div className="flex flex-col md:flex-row  items-center  p-5 bg-gray-500/10 rounded-b-2xl">
