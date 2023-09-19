@@ -7,4 +7,3 @@ const openai = new OpenAIApi(configuration);
 
 export default openai; 
 
-// 3:56
