@@ -15,10 +15,10 @@ interface Todo {
   $createAt: string,
   title: string,
   status: TypedColumn,
-  image: Image,
+  image?: Image ,
 }
 
 interface Image {
   bucketID: string;
-  fileID: string;
+  fileId: string;
 }
